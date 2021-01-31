@@ -1,5 +1,8 @@
 `{
   "br": "http://htmlpreview.github.io/",
+  "w":false,
+  "n":false,
+  "l":"",
   "prList": [
     {
       "title": "Make Money With an Awesome Blog",
