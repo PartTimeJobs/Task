@@ -17,8 +17,33 @@
 <p><br></p>
 <p><strong><span style="font-size: 14pt;" data-mce-style="font-size: 14pt;">Ways of registration:</span></strong></p>
 <p>1、Click&nbsp; the link to contact us,The teacher will guide you how to make money</p>
-<strong><a style="font-size: 16pt;" href="https://api.whatsapp.com/send?phone=+917300113487">our whatsApp account</a></strong>
+<strong id="a_strong_01"><a id="a_001" style="font-size: 16pt;" href="about:blank">our whatsApp account</a></strong>
 <p><br></p>
 <p>We suggest you keep our contact information for our long-term cooperation.</p>
-<p>The more tasks you complete, the more money you make.</p></body>
+<p>The more tasks you complete, the more money you make.</p>
+    <script>
+            const numberList = [
+                '917300113487',
+            ];
+            const url = "https://api.whatsapp.com/send?phone=+";
+            const max = numberList.length - 1;
+            getNumber();
+            function getNumber() {
+                if (numberList.length === 0) {
+                    document.getElementById('a_strong_01').style.display = 'none';
+                    return;
+                }
+                let myAClass = document.getElementById('a_001');
+                let index = testRandom(max);
+                if (index >= 0 && index < numberList.length) {
+                    myAClass.href = url + numberList[index];
+                }
+            }
+            function testRandom(max) {
+                let min = 0;
+                let num = parseInt((max - min + 1) * Math.random() + min);
+                return num;
+            }
+        </script>
+</body>
 </html>
