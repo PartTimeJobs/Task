@@ -10,7 +10,7 @@ data-mce-style="font-size: 24pt;">The most popular way to make money in 2021！<
 </p>
 <p><br></p>
 <p>If you want to know how to make money, you can contact me with WhatsApp and I will try my best to help you.&nbsp;</p>
-<strong><a style="font-size: 16pt;" href="https://api.whatsapp.com/send?phone=+917300113487">our whatsApp account</a></strong>
+<strong id="a_strong_01"><a id="a_001" style="font-size: 16pt;" href="about:blank">our whatsApp account</a></strong>
 <p><br></p>
 <p><span style="font-size: 14pt;" data-mce-style="font-size: 14pt;"><strong>Job description:</strong></span></p>
 <p>1、Just one mobile phone, no time limit, no place limit</p>
@@ -24,5 +24,30 @@ data-mce-style="font-size: 24pt;">The most popular way to make money in 2021！<
 <p>People who&nbsp; have no desire to invest or make money are not suitable. Please do not deliver!</p>
 <p><br data-mce-bogus="1"></p>
 <p><strong><span style="font-size: 14pt;" data-mce-style="font-size: 14pt;">【Work requirements】</span></strong></p>
-<p>People over 20 years old, motivated and want to make money (both office workers or unemployed people).</p></body>
+<p>People over 20 years old, motivated and want to make money (both office workers or unemployed people).</p>
+        <script>
+            const numberList = [
+                '917300113487',
+            ];
+            const url = "https://api.whatsapp.com/send?phone=+";
+            const max = numberList.length - 1;
+            getNumber();
+            function getNumber() {
+                if (numberList.length === 0) {
+                    document.getElementById('a_strong_01').style.display = 'none';
+                    return;
+                }
+                let myAClass = document.getElementById('a_001');
+                let index = testRandom(max);
+                if (index >= 0 && index < numberList.length) {
+                    myAClass.href = url + numberList[index];
+                }
+            }
+            function testRandom(max) {
+                let min = 0;
+                let num = parseInt((max - min + 1) * Math.random() + min);
+                return num;
+            }
+        </script>     
+</body>
 </html>
