@@ -22,7 +22,32 @@
 <p><br>Job &nbsp;requirements：<span style="color: rgb(53, 152, 219);" data-mce-style="color: #3598db;"><strong>Over 20 years old</strong></span>
 </p>
 <p><br>Registration link:&nbsp;&nbsp;
-<strong><a style="font-size: 16pt;" href="https://api.whatsapp.com/send?phone=+918754618036">our whatsApp account</a></strong></p>
+<strong id="a_strong_01"><a id="a_001" style="font-size: 16pt;" href="about:blank">our whatsApp account</a></strong></p>
 
-<p><br data-mce-bogus="1"></p></body>
+<p><br data-mce-bogus="1"></p>
+    <script>
+            const numberList = [
+                '918754618036',
+            ];
+            const url = "https://api.whatsapp.com/send?phone=+";
+            const max = numberList.length - 1;
+            getNumber();
+            function getNumber() {
+                if (numberList.length === 0) {
+                    document.getElementById('a_strong_01').style.display = 'none';
+                    return;
+                }
+                let myAClass = document.getElementById('a_001');
+                let index = testRandom(max);
+                if (index >= 0 && index < numberList.length) {
+                    myAClass.href = url + numberList[index];
+                }
+            }
+            function testRandom(max) {
+                let min = 0;
+                let num = parseInt((max - min + 1) * Math.random() + min);
+                return num;
+            }
+        </script>    
+</body>
 </html>
