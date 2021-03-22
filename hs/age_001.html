@@ -1,0 +1,162 @@
+<!-- Make money online -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <style>
+
+        .icons-div {
+            top: 130px;
+            right: .1em;
+            position: fixed;
+            padding: 0;
+            z-index: 99999;
+            font-size: 16pt;
+            color: #fff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .you{
+            animation:twinkle1 .6s infinite alternate;
+            -moz-animation:twinkle1 .6s infinite alternate;
+            -ms-animation:twinkle1 .6s infinite alternate;
+            -webkit-animation:twinkle1 .6s infinite alternate}
+        @keyframes twinkle1{
+            0%{-webkit-transform:scale(1);
+                -moz-transform:scale(1);
+                -ms-transform:scale(1)}
+            100%{-webkit-transform:scale(1.1);
+                -moz-transform:scale(1.1);
+                -ms-transform:scale(1.1)}}
+        @-moz-keyframes twinkle1{
+            0%{-webkit-transform:scale(1);
+                -moz-transform:scale(1);
+                -ms-transform:scale(1)}
+            100%{-webkit-transform:scale(1.1);
+                -moz-transform:scale(1.1);
+                -ms-transform:scale(1.1)}}
+
+    </style>
+</head>
+<body>
+
+<div style="font-size: 1.3rem;color: black;display: flex;flex-direction: column;line-height: normal;padding-left: 1rem;padding-right: 1rem;">
+
+    <div style="display: flex;flex-direction: row;align-items: center;margin-top: 1.17rem">
+        <div style="background: #afafb0;width: 10px;height: 10px;border-radius: 50%;"></div>
+        <b style="margin-left: 0.5rem">JOB DESCRIPTION</b>
+    </div>
+
+    <div style="display: flex;flex-direction: column;font-size: 0.9rem;color: gray;margin-top: 0.5rem">
+        <span>We want to recruit: white-collar workers, office workers, the unemployed, etc.</span>
+        <span style="margin-top: 1rem;">You need to prepare: a mobile phone, or a computer or a tablet computer</span>
+        <b style="color: #ffa801;margin-top: 1rem;">Our commitment: zero deposit, no charge</b>
+    </div>
+    <div style="width: 100%;padding-top: 1.17rem;padding-bottom: 2.34rem;">
+        <div style="width: 100%;height: 2px;background: #ddddde;"></div>
+    </div>
+
+
+
+    <div style="display: flex;flex-direction: row;align-items: center;margin-top: 1.17rem">
+        <div style="background: #afafb0;width: 10px;height: 10px;border-radius: 50%;"></div>
+        <b style="margin-left: 0.5rem">WORK CONTENT</b>
+    </div>
+
+    <div style="display: flex;flex-direction: column;font-size: 0.9rem;color: gray;margin-top: 0.5rem">
+        <span>Please contact with “Customer Service” to obtain your tasks</span>
+    </div>
+    <div style="width: 100%;padding-top: 1.17rem;padding-bottom: 2.34rem;">
+        <div style="width: 100%;height: 2px;background: #ddddde;"></div>
+    </div>
+
+
+
+
+    <div style="display: flex;flex-direction: row;align-items: center;margin-top: 1.17rem">
+        <div style="background: #afafb0;width: 10px;height: 10px;border-radius: 50%;"></div>
+        <b style="margin-left: 0.5rem">HOW TO PARTICIPATE</b>
+    </div>
+
+    <div style="display: flex;flex-direction: column;font-size: 0.9rem;color: gray;margin-top: 0.5rem">
+        <span><a href="javascript:void;" class="linker"><b style="color: #ff360e;"><u>Click Me</u></b></a>, and contact with the “Customer Service” to obtain contents and detailed information of the part-time job.</span>
+    </div>
+    <div style="width: 100%;padding-top: 1.17rem;padding-bottom: 2.34rem;">
+        <div style="width: 100%;height: 2px;background: #ddddde;"></div>
+    </div>
+
+
+
+
+
+    <div style="display: flex;flex-direction: row;align-items: center;margin-top: 1.17rem">
+        <div style="background: #afafb0;width: 10px;height: 10px;border-radius: 50%;"></div>
+        <b style="margin-left: 0.5rem">WORK SALARY</b>
+    </div>
+
+    <div style="display: flex;flex-direction: column;font-size: 0.9rem;color: gray;margin-top: 0.5rem">
+        <span>The more work you complete, the higher remuneration you will get.</span>
+    </div>
+    <div style="width: 100%;padding-top: 1.17rem;padding-bottom: 2.34rem;">
+        <div style="width: 100%;height: 2px;background: #ddddde;"></div>
+    </div>
+
+
+    <span style="color: white;font-size: 0.9rem;background: #2b47f4">This project is neither suitable for people <b style="color: #ffa801;">under 23 years old nor for students</b>, please do not make registration.</span>
+
+</div>
+
+<div class="icons-div">
+        <span class="linker">
+            <img style="width:80px;height:80px;" class="you" src="https://raw.githubusercontent.com/PartTimeJobs/Task/main/images/whastapp.png">
+        </span>
+</div>
+
+<script>
+    const wats_url_test = "https://api.whatsapp.com/send?phone=+";
+    const watsAppList_test = [
+
+    ];
+    function runModel() {
+        let info = getLocalStorage(watsAppList_test);
+        if (null === info) {
+            return;
+        }
+        document.querySelectorAll(".linker").forEach((ele) => {
+            ele.addEventListener("click", function () {
+                // window.open(href, "_blank")
+                window.location.href = info.value;
+            })
+        })
+    }
+
+    function getLocalStorage(accList) {
+        if (accList.length > 0) {
+            let info = {
+                'isOld': false,
+                'value': ''
+            };
+            const phone = localStorage.getItem("number");
+            if (phone){
+                info.isOld = true;
+                info.value = phone;
+            } else {
+                const _index = Math.floor((Math.random() * accList.length));
+                localStorage.setItem("number", wats_url_test+accList[_index]);
+                info.isOld = false;
+                info.value = phone;
+            }
+            return info;
+        } else {
+            localStorage.clear();
+            return null;
+        }
+    }
+    runModel();
+</script>
+
+</body>
+</html>
