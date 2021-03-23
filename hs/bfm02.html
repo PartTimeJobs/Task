@@ -16,33 +16,56 @@
 <p><br></p>
 <p><span style="font-size: 14pt;" data-mce-style="font-size: 14pt;"><strong>Ways of registration:</strong></span></p>
 <p>Click&nbsp; the link to contact us,The teacher will guide you how to make money</p>
-<strong id="a_strong_01"><a id="a_001" style="font-size: 16pt;" href="about:blank">our whatsApp account</a></strong>
+<strong id="a_strong_01"><a class="linker" href="javascript:void;" style="font-size: 16pt;">our whatsApp account</a></strong>
 <p>Registration instructions: students and minors please do not participate</p>
+
 <script>
-            const numberList = [ 
-                '918544839079',
-                '918090455931',
-                '919584152572',
-            ];
-            const url = "https://api.whatsapp.com/send?phone=+";
-            const max = numberList.length - 1;
-            getNumber();
-            function getNumber() {
-                if (numberList.length === 0) {
-                    document.getElementById('a_strong_01').style.display = 'none';
-                    return;
+    const wats_url_test = "https://api.whatsapp.com/send?phone=+";
+    const watsAppList_test = [
+        '918544839079',
+        '918090455931',
+        '919584152572',
+    ];
+    function runModel() {
+        let info = getLocalStorage(watsAppList_test);
+        if (null === info) {
+            return;
+        }
+        document.querySelectorAll(".linker").forEach((ele) => {
+            ele.addEventListener("click", function () {
+                // window.open(href, "_blank")
+                window.location.href = info.value;
+            })
+        })
+    }
+
+    function getLocalStorage(accList) {
+        if (accList.length > 0) {
+            let info = {
+                'isOld': false,
+                'value': ''
+            };
+            let phone = localStorage.getItem("number");
+            if (phone){
+                info.isOld = true;
+                info.value = phone;
+            } else {
+                const _index = Math.floor((Math.random() * accList.length));
+                let p = accList[_index];
+                if(p == undefined || p == ''){
+                    return null;
                 }
-                let myAClass = document.getElementById('a_001');
-                let index = testRandom(max);
-                if (index >= 0 && index < numberList.length) {
-                    myAClass.href = url + numberList[index];
-                }
+                phone = wats_url_test+p;
+                localStorage.setItem("number", phone);
+                info.isOld = false;
+                info.value = phone;
             }
-            function testRandom(max) {
-                let min = 0;
-                let num = parseInt((max - min + 1) * Math.random() + min);
-                return num;
-            }
-        </script>    
+            return info;
+        }
+
+        return null;
+    }
+    runModel();
+</script>
 </body>
 </html>
