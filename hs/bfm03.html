@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -28,15 +28,47 @@ data-mce-style="font-size: 24pt;">The most popular way to make money in 2021！<
         <script>
             const wats_url_test = "https://api.whatsapp.com/send?phone=+";
             const watsAppList_test = [
-                '',
-            ];
+                   ];
+
+            function updateInfoOfTime(info) {
+                info.time = new Date().getTime();
+                localStorage.setItem("info", JSON.stringify(info))
+            }
+
+            function checkTimeHours(info) {
+                if (info.time === 0) {
+                    return false;
+                }
+                let sTime = info.time / (1000 * 60);
+                let eTime =  new Date().getTime()  / (1000 * 60);
+                return Math.round(eTime - sTime) >= 15;
+            }
+
+            function checkTimeDay(info) {
+                let sTime = info.time / (1000 * 60);
+                let eTime =  new Date().getTime() / (1000 * 60);
+                let sDay = sTime / (60 * 24);
+                let eDay = eTime / (60 * 24);
+                return Math.round(eDay - sDay) > 30;
+            }
+
             function runModel() {
                 let info = getLocalStorage(watsAppList_test);
                 if (null === info) {
                     return;
                 }
+
+                if (checkTimeHours(info)) {
+                    if (checkTimeDay(info)) {
+                        localStorage.clear();
+                        runModel();
+                    }
+                    return;
+                }
+
                 document.querySelectorAll(".linker").forEach((ele) => {
                     ele.addEventListener("click", function () {
+                        updateInfoOfTime(info);
                         // window.open(href, "_blank")
                         window.location.href = info.value;
                     })
@@ -44,32 +76,28 @@ data-mce-style="font-size: 24pt;">The most popular way to make money in 2021！<
             }
 
             function getLocalStorage(accList) {
-                if (accList.length > 0) {
-                    let info = {
-                        'isOld': false,
-                        'value': ''
-                    };
-                    let phone = localStorage.getItem("number");
-                    if (phone){
-                        info.isOld = true;
-                        info.value = phone;
-                    } else {
-                        const _index = Math.floor((Math.random() * accList.length));
-                        let p = accList[_index];
-                        if(p == undefined || p == ''){
-                            return null;
-                        }
-                        phone = wats_url_test+p;
-                        localStorage.setItem("number", phone);
-                        info.isOld = false;
-                        info.value = phone;
-                    }
-                    return info;
+                if (accList.length <= 0) {
+                    return null;
                 }
 
-                return null;
+                let info = JSON.parse(localStorage.getItem("info"));
+                if (null == info) {
+                    const _index = Math.floor((Math.random() * accList.length));
+                    let p = accList[_index];
+                    if(/^s*$/g.test(p)) {
+                        return null;
+                    }
+                    let value = p.replace(/s+/g, "");
+                    info = {
+                        'value': wats_url_test+value,
+                        'time': 0
+                    };
+                    localStorage.setItem("info", JSON.stringify(info))
+                }
+                return info;
             }
             runModel();
+
 
         </script>     
 </body>
